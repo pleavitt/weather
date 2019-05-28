@@ -31,7 +31,12 @@ class IndexPage extends React.Component {
         </Layout>
       )
     }
-    const { main: { temp, temp_min, temp_max, humidity }, weather, name, sys } = this.state;
+    const {
+      main: { temp, temp_min, temp_max, humidity },
+      weather,
+      name,
+      sys,
+    } = this.state
     return (
       <Layout>
         <SEO title="Home" />
@@ -46,45 +51,37 @@ class IndexPage extends React.Component {
 
           <div className="flex flex-row px-6 py-4 justify-between pb-10">
             <i
-              className={`text-indigo-500 text-5xl wi wi-owm-${
-                weather[0].id
-              }`}
+              className={`text-indigo-500 text-5xl wi wi-owm-${weather[0].id}`}
             />
             <div className="flex">
               <div className="text-indigo-700 text-6xl font-bold self-center font-sans">
                 {Math.round(temp)}
               </div>
-              <div className="text-indigo-700 text-xl font-bold self-start font-sans">°C</div>
+              <div className="text-indigo-700 text-xl font-bold self-start font-sans">
+                °C
+              </div>
             </div>
           </div>
           <div className="flex flex-row px-6 py-4 justify-between">
-            <div className="text-gray-500">
-              LOW
-            </div>
+            <div className="text-gray-500">LOW</div>
             <div className="text-indigo-700 font-bold text-xl self-center font-sans">
               {Math.round(temp_min)}°C
             </div>
-          </div>          
+          </div>
           <div className="flex flex-row px-6 py-4 justify-between">
-            <div className="text-gray-500">
-              HIGH
-            </div>
+            <div className="text-gray-500">HIGH</div>
             <div className="text-indigo-700 font-bold text-xl self-center font-sans">
               {Math.round(temp_max)}°C
             </div>
           </div>
 
           <div className="flex flex-row px-6 py-4 justify-between pb-10">
-            <div className="text-gray-500">
-              HUMIDITY
-            </div>
+            <div className="text-gray-500">HUMIDITY</div>
             <div className="text-indigo-700 font-bold text-xl self-center font-sans">
               {humidity}%
             </div>
           </div>
-          
         </div>
-
 
         {/* <h3>Sunrise is at: {new Date(sys.sunrise).toTimeString()}</h3>
       <h3>Sunset is at: {new Date(sys.sunset).toTimeString()}</h3> */}
