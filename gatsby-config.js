@@ -1,4 +1,5 @@
 module.exports = {
+    pathPrefix: "/weather",
   siteMetadata: {
     title: `Paul's Awesome Weather Page`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,

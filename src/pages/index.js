@@ -13,7 +13,7 @@ class IndexPage extends React.Component{
   }
   componentDidMount(){
     fetch(
-      'http://api.openweathermap.org/data/2.5/weather?q=Brisbane,AU&units=metric&APPID=82f64da34251b0e58e057d344f3307a1'
+      'https://api.openweathermap.org/data/2.5/weather?q=Brisbane,AU&units=metric&APPID=82f64da34251b0e58e057d344f3307a1'
     ).then(data => data.json())
     .then( result => {
       console.log(result);
