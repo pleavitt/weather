@@ -24,7 +24,7 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          {siteTitle}
+          <div className="text-center">{siteTitle}</div>
         </Link>
       </h1>
     </div>

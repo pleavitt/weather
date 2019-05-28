@@ -2,22 +2,24 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import "../css/weather-icons.min.css"
 // import { getWeather } from "../lib/api"
 
-class IndexPage extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {};
+class IndexPage extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
   }
-  componentDidMount(){
+  componentDidMount() {
     fetch(
-      'https://api.openweathermap.org/data/2.5/weather?q=Brisbane,AU&units=metric&APPID=82f64da34251b0e58e057d344f3307a1'
-    ).then(data => data.json())
-    .then( result => {
-      console.log(result);
-      this.setState({...result});
-    })
-    .catch(error => console.error(error));
+      "https://api.openweathermap.org/data/2.5/weather?q=Brisbane,AU&units=metric&APPID=82f64da34251b0e58e057d344f3307a1"
+    )
+      .then(data => data.json())
+      .then(result => {
+        console.log(result)
+        this.setState({ ...result })
+      })
+      .catch(error => console.error(error))
   }
 
   render() {
@@ -29,20 +31,64 @@ class IndexPage extends React.Component{
         </Layout>
       )
     }
+    const { main: { temp, temp_min, temp_max, humidity }, weather, name, sys } = this.state;
     return (
       <Layout>
-      <SEO title="Home" />
-      <h1>The weather in {this.state.name} is currently</h1>
-      <h3>Today's outlook is {this.state.weather[0].main}</h3>
-      <h3>It is currently: {Math.round(this.state.main.temp)}°C</h3>
-      <h3>Today's low: {Math.round(this.state.main.temp_min)}°C</h3>
-      <h3>Today's high: {Math.round(this.state.main.temp_max)}°C</h3>
-      <h3>Humidity: {this.state.main.humidity}%</h3>
-      {/* <h3>Sunrise is at: {new Date(this.state.sys.sunrise).toTimeString()}</h3>
-      <h3>Sunset is at: {new Date(this.state.sys.sunset).toTimeString()}</h3> */}
+        <SEO title="Home" />
 
-    </Layout>
+        <div className="max-w-sm rounded shadow-lg bg-purple-100 mb-10">
+          <h2 className="text-gray-800 text-2xl font-sans pl-3 pt-3">
+            {name}, {sys.country}
+          </h2>
+          <h2 className="text-gray-600 text-2xl pl-3 font-sans">
+            {weather[0].description}
+          </h2>
 
+          <div className="flex flex-row px-6 py-4 justify-between pb-10">
+            <i
+              className={`text-indigo-500 text-5xl wi wi-owm-${
+                weather[0].id
+              }`}
+            />
+            <div className="flex">
+              <div className="text-indigo-700 text-6xl font-bold self-center font-sans">
+                {Math.round(temp)}
+              </div>
+              <div className="text-indigo-700 text-xl font-bold self-start font-sans">°C</div>
+            </div>
+          </div>
+          <div className="flex flex-row px-6 py-4 justify-between">
+            <div className="text-gray-500">
+              LOW
+            </div>
+            <div className="text-indigo-700 font-bold text-xl self-center font-sans">
+              {Math.round(temp_min)}°C
+            </div>
+          </div>          
+          <div className="flex flex-row px-6 py-4 justify-between">
+            <div className="text-gray-500">
+              HIGH
+            </div>
+            <div className="text-indigo-700 font-bold text-xl self-center font-sans">
+              {Math.round(temp_max)}°C
+            </div>
+          </div>
+
+          <div className="flex flex-row px-6 py-4 justify-between pb-10">
+            <div className="text-gray-500">
+              HUMIDITY
+            </div>
+            <div className="text-indigo-700 font-bold text-xl self-center font-sans">
+              {humidity}%
+            </div>
+          </div>
+          
+        </div>
+
+
+        {/* <h3>Sunrise is at: {new Date(sys.sunrise).toTimeString()}</h3>
+      <h3>Sunset is at: {new Date(sys.sunset).toTimeString()}</h3> */}
+      </Layout>
     )
   }
 }
