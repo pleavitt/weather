@@ -36,11 +36,12 @@ class IndexPage extends React.Component{
       <SEO title="Home" />
       <h1>The weather in {this.state.name} is currently</h1>
       <h3>Today's outlook is {this.state.weather[0].main}</h3>
-      <h3>Today's low: {Math.round(this.state.main.temp_min)}</h3>
-      <h3>Today's high: {this.state.main.temp_max}</h3>
-      <h3>Humidity: {this.state.main.humidity}</h3>
-      <h3>Sunrise is at: {new Date(this.state.sys.sunrise).toTimeString()}</h3>
-      <h3>Sunset is at: {new Date(this.state.sys.sunset).toTimeString()}</h3>
+      <h3>It is currently: {Math.round(this.state.main.temp)}°C</h3>
+      <h3>Today's low: {Math.round(this.state.main.temp_min)}°C</h3>
+      <h3>Today's high: {Math.round(this.state.main.temp_max)}°C</h3>
+      <h3>Humidity: {this.state.main.humidity}%</h3>
+      {/* <h3>Sunrise is at: {new Date(this.state.sys.sunrise).toTimeString()}</h3>
+      <h3>Sunset is at: {new Date(this.state.sys.sunset).toTimeString()}</h3> */}
 
     </Layout>
 

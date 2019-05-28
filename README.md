@@ -7,3 +7,4 @@ This is a basic weather page that pulls weather data relating to brisbane and di
 - Use Icons to display info
 - Format data so it reads easier.
 - Code Cleanup
+- Output Sunrise and sunset times (currently display incorrectly)
